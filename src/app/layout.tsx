@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeProvider } from 'next-themes'
-
+import {dark} from "@clerk/themes"
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,9 +30,7 @@ export default function RootLayout({
 
     <ClerkProvider  
       appearance={{
-        variables: {
-          colorPrimary: 'hsl(263.4, 70%, 50.4%)', // change this value (you can get it from you're css variables, make sure to include 'hsl' and commas)
-        },
+        baseTheme: dark
       }}
     >
       <html lang="ru" suppressHydrationWarning>

@@ -1,38 +1,94 @@
+"use client";
 import { Button } from "@/components/ui/button"
+import React from "react";
+import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 export default function Hero() {
   return (
-    <div className="relative h-[50vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div
-        className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage: "url('https://images.unsplash.com/photo-1626544827763-d516dce335e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')",
-        }}
-      >
-        {/* Overlay */}
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 text-center px-4 sm:px-6 lg:px-8 max-w-3xl">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight mb-2 sm:mb-4">
-          Hackorg
-          <span className="block text-primary">With Ease</span>
-        </h1>
-        <p className="mt-2 text-sm sm:text-base md:text-lg text-gray-300 sm:mt-3 sm:max-w-xl sm:mx-auto">
-Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi et ad, consectetur, voluptates tenetur veritatis recusandae magnam officia vero officiis doloribus provident saepe aliquid voluptate rerum odit quasi tempora soluta.        </p>
-        <div className="mt-4 sm:mt-6">
-          <Button size="lg" className="rounded-full px-6 py-2 bg-primary text-primary-foreground hover:bg-primary/90">
-            Start Designing for Free
-          </Button>
-        </div>
-      </div>
-
-      {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 w-full h-16 bg-gradient-to-t from-black to-transparent opacity-50"></div>
-      <div className="absolute top-0 right-0 w-32 h-32 bg-primary rounded-full filter blur-2xl opacity-20"></div>
-      <div className="absolute bottom-0 left-0 w-32 h-32 bg-secondary rounded-full filter blur-2xl opacity-20"></div>
+    <div className="h-96 relative w-full overflow-hidden bg-slate-900 flex flex-col items-center justify-center rounded-lg">
+      <div className="absolute inset-0 w-full h-full bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
+ 
+      <Boxes />
+      <h1 className={cn("md:text-4xl text-xl text-white relative z-20")}>
+        HackOrg
+      </h1>
+      <p className="text-center mt-2 text-neutral-300 relative z-20">
+        Попробуй себя в хакатонах и соревнованиях
+      </p>
     </div>
   )
 }
+
+
+export const BoxesCore = ({ className, ...rest }: { className?: string }) => {
+  const rows = new Array(150).fill(1);
+  const cols = new Array(100).fill(1);
+  let colors = [
+    "--sky-300",
+    "--pink-300",
+    "--green-300",
+    "--yellow-300",
+    "--red-300",
+    "--purple-300",
+    "--blue-300",
+    "--indigo-300",
+    "--violet-300",
+  ];
+  const getRandomColor = () => {
+    return colors[Math.floor(Math.random() * colors.length)];
+  };
+
+  return (
+    <div
+      style={{
+        transform: `translate(-40%,-60%) skewX(-48deg) skewY(14deg) scale(0.675) rotate(0deg) translateZ(0)`,
+      }}
+      className={cn(
+        "absolute left-1/4 p-4 -top-1/4 flex  -translate-x-1/2 -translate-y-1/2 w-full h-full z-0 ",
+        className
+      )}
+      {...rest}
+    >
+      {rows.map((_, i) => (
+        <motion.div
+          key={`row` + i}
+          className="w-16 h-8  border-l  border-slate-700 relative"
+        >
+          {cols.map((_, j) => (
+            <motion.div
+              whileHover={{
+                backgroundColor: `var(${getRandomColor()})`,
+                transition: { duration: 0 },
+              }}
+              animate={{
+                transition: { duration: 2 },
+              }}
+              key={`col` + j}
+              className="w-16 h-8  border-r border-t border-slate-700 relative"
+            >
+              {j % 2 === 0 && i % 2 === 0 ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth="1.5"
+                  stroke="currentColor"
+                  className="absolute h-6 w-10 -top-[14px] -left-[22px] text-slate-700 stroke-[1px] pointer-events-none"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M12 6v12m6-6H6"
+                  />
+                </svg>
+              ) : null}
+            </motion.div>
+          ))}
+        </motion.div>
+      ))}
+    </div>
+  );
+};
+
+export const Boxes = React.memo(BoxesCore);
