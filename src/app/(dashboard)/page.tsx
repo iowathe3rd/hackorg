@@ -6,9 +6,6 @@ import PageContainer from '@/components/layout/page-container';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import api from '@/api';
-import { User } from '@/types';
-import { currentUser } from '@clerk/nextjs/server';
 import { getUserData } from '@/lib/api-utils';
 
 const StatCard = ({
