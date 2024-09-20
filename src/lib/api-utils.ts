@@ -1,4 +1,5 @@
 import api from '@/api';
+import { User } from '@/types';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import { redirect } from 'next/navigation';
 

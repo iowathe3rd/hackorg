@@ -10,7 +10,6 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
-import api from '@/api';
 import { CalendarDaysIcon } from 'lucide-react';
 
 export default function LatestActivity() {

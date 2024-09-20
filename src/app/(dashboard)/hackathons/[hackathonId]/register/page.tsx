@@ -6,8 +6,7 @@ import {
   CardHeader,
   CardTitle,
   CardDescription,
-  CardContent,
-  Card
+  CardContent
 } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -32,7 +31,7 @@ const HackathonCard: React.FC<HackathonCardProps> = ({
   className
 }) => {
   const formatDate = (dateString: string) => {
-    const date = parseISO(dateString);
+    const date = new Date(dateString);
     return format(date, 'MMM dd, yyyy');
   };
 
@@ -87,7 +86,7 @@ const HackathonCard: React.FC<HackathonCardProps> = ({
           </Button>
         ) : (
           <Button variant="secondary" className="w-full" disabled>
-            {status === HackathonStatus.ONGOING ? 'In Progress' : 'Finished'}
+            {status === HackathonStatus.ONGOING ? 'In Progress' : 'Closed'}
           </Button>
         )}
       </CardContent>

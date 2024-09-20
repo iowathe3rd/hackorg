@@ -50,8 +50,8 @@ export type Hackathon = {
   name: string;
   description: string;
   location: string;
-  startDate: Date;
-  endDate: Date;
+  startDate: string;
+  endDate: string;
   maxParticipants: number;
   registrationDeadline: Date;
   status: HackathonStatus;
