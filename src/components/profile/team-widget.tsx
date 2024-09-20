@@ -17,7 +17,7 @@ export default async function TeamWidget({ teamId }: TeamWidgetProps) {
     <Card className="col-span-4 md:col-span-3">
       <CardHeader>
         <CardTitle>Ваша команда</CardTitle>
-        <CardDescription>Вы участвуете в команде "Команда 1"</CardDescription>
+        <CardDescription>Вы участвуете в команде Команда 1</CardDescription>
       </CardHeader>
       <CardContent>
         <MembersList users={team.members} />
