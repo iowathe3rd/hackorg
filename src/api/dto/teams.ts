@@ -9,6 +9,9 @@ export interface UpdateTeamDto {
 
 export interface GetTeamDto {
   id: string;
+  name: string;
+  teamWins?: number;
+  personalWins?: number;
 }
 
 export interface AddMemberToTeamDto {
