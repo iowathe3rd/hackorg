@@ -16,6 +16,8 @@ export class ApiClient extends BaseApi {
   }
 }
 
-const api = new ApiClient('http://localhost:4000');
-
+const api = new ApiClient(process.env.API_URL || 'http://localhost:4000');
+export const getApiClient = () => {
+  return api;
+};
 export default api;
